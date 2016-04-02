@@ -23,6 +23,7 @@
 #include "binary_file_reader.h"
 #include "binary_file_writer.h"
 
+using std::stringstream;
 /**
  * HuffmanTree: class that represents a Huffman tree for encoding and
  * decoding files with Huffman coding.
@@ -128,7 +129,6 @@ class HuffmanTree
                                   character and a frquency count. */
         TreeNode* left;  /**< Left child of this TreeNode. */
         TreeNode* right; /**< Right child of this TreeNode. */
-
         /**
          * Builds a new TreeNode with the given frequency as data.
          *
@@ -266,6 +266,7 @@ class HuffmanTree
      * (chosen by fair dice roll)
      */
     const static int _max_print_height = 9;
+    void decodeNode(stringstream& ss, BinaryFileReader& bfile, TreeNode* &current);
 
     TreeNode* root;                            /**< Root of the HuffmanTree. */
     std::map<char, std::vector<bool>> bitsMap; /**< Standard map that maps
