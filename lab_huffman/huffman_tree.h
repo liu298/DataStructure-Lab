@@ -266,7 +266,7 @@ class HuffmanTree
      * (chosen by fair dice roll)
      */
     const static int _max_print_height = 9;
-    void decodeNode(stringstream& ss, BinaryFileReader& bfile, TreeNode* &current);
+    //void decodeNode(stringstream& ss, BinaryFileReader& bfile, TreeNode* &current);
 
     TreeNode* root;                            /**< Root of the HuffmanTree. */
     std::map<char, std::vector<bool>> bitsMap; /**< Standard map that maps

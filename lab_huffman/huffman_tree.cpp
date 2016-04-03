@@ -200,41 +200,23 @@ void HuffmanTree::decode(stringstream& ss, BinaryFileReader& bfile)
          * character to the stringstream (with operator<<, just like cout)
          * and start traversing from the root node again.
          */
-    if(bfile.hasBits())
-        decodeNode(ss, bfile, root);
-/*
-    TreeNode * current = root;
-    while( bfile.hasBits() ) 
+    TreeNode*  current = root;
+    while(bfile.hasBits())
     {
-         //
-         * @todo Your code here!
-         *
-         * This code is reading in all of the bits in the binary file
-         * given. After reading a bit, we go left if the bit was a 0 (or
-         * false), and we go right if the bit was a 1 (or true).
-         *
-         * Special case: if we are at a leaf node, we should "print" its
-         * character to the stringstream (with operator<<, just like cout)
-         * and start traversing from the root node again.
-
-        
-        if (bfile.getNextBit() == 0)
-        {
-            current = current->left;            
-        }           
+        if(!bfile.getNextBit())
+            current = current->left;
         else
-        {
             current = current->right;
-        }
-        if (current->left == NULL && current->right == NULL)
+        if(current->left == NULL && current->right == NULL)
         {
-            ss<<current->freq.getCharacter();
+            ss << current->freq.getCharacter();
             current = root;
         }
-    }  
-         */
-}
 
+    }
+
+}
+/*
 void HuffmanTree::decodeNode(stringstream& ss, BinaryFileReader& bfile, TreeNode* &current)
 {
     if(bfile.hasBits())
@@ -257,7 +239,7 @@ void HuffmanTree::decodeNode(stringstream& ss, BinaryFileReader& bfile, TreeNode
 
        
 }
-
+*/
 void HuffmanTree::writeTree(BinaryFileWriter& bfile)
 {
     writeTree(root, bfile);
